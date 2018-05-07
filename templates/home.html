@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block login %}
+    <form action="/login" method="post">{% csrf_token %}
+        {% for field in auth_form %}
+        {{ field }}
+        {% endfor %}
+        <input type="submit" id="btnLogIn" value="Log In">
+    </form>
+{% endblock %}
+
+
+{% block content %}
+
+<img src="/static/gfx/frog.jpg">
+<div class="panel right">
+    <h1>New to TALK?</h1>
+    <p>
+        <form action="/signup" method="post">{% csrf_token %}
+            {% for field in user_form %}
+            {{ field }}
+            {% endfor %}
+            <input type="submit" value="Create Account">
+        </form>
+    </p>
+</div>
+{% endblock %}
